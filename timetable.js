@@ -5,7 +5,7 @@ const timetable = [
             { time: "08:00 - 09:00", subject: "Math", room: "Room 101", teacher: "Mr. Smith" },
             { time: "09:00 - 10:00", subject: "Science", room: "Room 102", teacher: "Mrs. Johnson" },
             { time: "10:00 - 11:00", subject: "History", room: "Room 103", teacher: "Mr. Brown" },
-            // Add more slots as needed
+            
         ]
     },
     {
@@ -13,10 +13,18 @@ const timetable = [
         slots: [
             { time: "08:00 - 09:00", subject: "English", room: "Room 104", teacher: "Ms. Davis" },
             { time: "09:00 - 10:00", subject: "Geography", room: "Room 105", teacher: "Mr. Wilson" },
-            // Add more slots as needed
+            
         ]
     },
-    // Add more days as needed
+    
+    {
+        day: "Wednesday",
+        slots: [
+            { time: "10:00 - 12:00", subject: "Social Studies", room: "Room 134", teacher: "Ms. Edith" },
+            { time: "11:30 - 14:00", subject: "Chemistry", room: "Room 124", teacher: "Mr. Alex" },
+            
+        ]
+    },
 ];
 
 function generateTimetable() {
