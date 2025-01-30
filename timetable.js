@@ -5,7 +5,6 @@ const timetable = [
             { time: "08:00 - 09:00", subject: "Math", room: "Room 101", teacher: "Mr. Smith" },
             { time: "09:00 - 10:00", subject: "Science", room: "Room 102", teacher: "Mrs. Johnson" },
             { time: "10:00 - 11:00", subject: "History", room: "Room 103", teacher: "Mr. Brown" },
-            
         ]
     },
     {
@@ -13,16 +12,13 @@ const timetable = [
         slots: [
             { time: "08:00 - 09:00", subject: "English", room: "Room 104", teacher: "Ms. Davis" },
             { time: "09:00 - 10:00", subject: "Geography", room: "Room 105", teacher: "Mr. Wilson" },
-            
         ]
     },
-    
     {
         day: "Wednesday",
         slots: [
             { time: "10:00 - 12:00", subject: "Social Studies", room: "Room 134", teacher: "Ms. Edith" },
             { time: "11:30 - 14:00", subject: "Chemistry", room: "Room 124", teacher: "Mr. Alex" },
-            
         ]
     },
 ];
@@ -31,17 +27,18 @@ function generateTimetable() {
     const timetableContainer = document.getElementById('timetable');
     let html = '';
 
-    timetable.forEach(day => {
+    timetable.forEach((day, dayIndex) => {
         html += `<h2>${day.day}</h2>`;
         html += `<table>`;
-        html += `<tr><th>Time</th><th>Subject</th><th>Room</th><th>Teacher</th></tr>`;
+        html += `<tr><th>Time</th><th>Subject</th><th>Room</th><th>Teacher</th><th>Action</th></tr>`;
         
-        day.slots.forEach(slot => {
+        day.slots.forEach((slot, slotIndex) => {
             html += `<tr>`;
             html += `<td>${slot.time}</td>`;
             html += `<td>${slot.subject}</td>`;
             html += `<td>${slot.room}</td>`;
             html += `<td>${slot.teacher}</td>`;
+            html += `<td><button onclick="deleteSlot(${dayIndex}, ${slotIndex})">Delete</button></td>`;
             html += `</tr>`;
         });
 
@@ -49,6 +46,14 @@ function generateTimetable() {
     });
 
     timetableContainer.innerHTML = html;
+}
+
+function deleteSlot(dayIndex, slotIndex) {
+    // Remove the slot from the timetable array
+    timetable[dayIndex].slots.splice(slotIndex, 1);
+
+    // Re-render the timetable
+    generateTimetable();
 }
 
 // Generate the timetable when the page loads
